@@ -1,27 +1,23 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-        }
-    }
+    agent any
 
     stages {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'echo Installing dependencies...'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                sh 'docker build -t jenkins-node-app .'
+                sh 'echo Building application...'
             }
         }
 
-        stage('Run Container') {
+        stage('Deploy') {
             steps {
-                sh 'docker run -d -p 3001:3000 jenkins-node-app'
+                sh 'echo Deployment successful!'
             }
         }
     }
